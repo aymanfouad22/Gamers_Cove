@@ -4,29 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Gamers Cove/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/gameController.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Comment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Game.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Review.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/User.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/games.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/comment-box/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/common/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/game-card/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/navbar/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/review-section/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/game-details/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/game-list/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/home/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/user-profile/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/services/api.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/utils/helpers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="updated file structure for better integration with Springboot app">
+      <change beforePath="$PROJECT_DIR$/Gamers Cove/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gamers Cove/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gamers Cove/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gamers Cove/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gamers Cove/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gamers Cove/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gamers Cove/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gamers Cove/src/main/java/org/example/gamerscove/GamersCoveApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gamers Cove/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gamers Cove/src/test/java/org/example/gamerscove/GamersCoveApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +41,13 @@
     &quot;accountId&quot;: &quot;83aaa99c-af3d-4185-ac5f-4a7569658419&quot;
   }
 }</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -63,7 +58,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.GamersCoveApplication.executor": "Run",
+    "Application.GamersCoveApplication.executor": "Debug",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -129,11 +124,24 @@
       <option name="presentableId" value="Default" />
       <updated>1757879044365</updated>
       <workItem from="1757879046894" duration="1746000" />
-      <workItem from="1757880817043" duration="1096000" />
+      <workItem from="1757880817043" duration="1587000" />
     </task>
+    <task id="LOCAL-00001" summary="updated file structure for better integration with Springboot app">
+      <option name="closed" value="true" />
+      <created>1757881959343</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1757881959343</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="updated file structure for better integration with Springboot app" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated file structure for better integration with Springboot app" />
   </component>
 </project>
