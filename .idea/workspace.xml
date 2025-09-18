@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="updated file structure for better integration with Springboot app">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Friendship.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Review.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/User.java" afterDir="false" />
+    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="Created entities/models using ORM. User, Review, Game and friendship entities. Trivia/AI game sessions will be implemented at a later time">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/GamersCoveApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GamersCoveApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GamersCoveApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/GamersCoveApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +26,6 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
         <entry key="$PROJECT_DIR$" value="database-integration" />
       </map>
     </option>
@@ -54,6 +49,14 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="17" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -73,6 +76,7 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.GamersCoveApplication.executor": "Debug",
     "git-widget-placeholder": "backend-dev-models",
@@ -85,7 +89,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -97,7 +104,7 @@
   </component>
   <component name="RunManager" selected="Application.GamersCoveApplication">
     <configuration name="GamersCoveApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GamersCoveApplication" />
+      <option name="MAIN_CLASS_NAME" value="org.example.gamerscove.GamersCoveApplication" />
       <module name="GamersCove" />
       <extension name="coverage">
         <pattern>
@@ -148,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757881959343</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created entities/models using ORM. User, Review, Game and friendship entities. Trivia/AI game sessions will be implemented at a later time">
+      <option name="closed" value="true" />
+      <created>1758236301899</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758236301899</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +171,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated file structure for better integration with Springboot app" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated file structure for better integration with Springboot app" />
+    <MESSAGE value="Created entities/models using ORM. User, Review, Game and friendship entities. Trivia/AI game sessions will be implemented at a later time" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created entities/models using ORM. User, Review, Game and friendship entities. Trivia/AI game sessions will be implemented at a later time" />
   </component>
 </project>
