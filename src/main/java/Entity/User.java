@@ -74,8 +74,10 @@ public class User {
 
     public User(){}
 
-    public User(String firebaseUid, String username) {
+    public User(String firebaseUid, String username, String email, String password) {
         this.firebaseUid = firebaseUid;
         this.username = username;
+        this.email = email;
+        this.password = password;
     }
 }
