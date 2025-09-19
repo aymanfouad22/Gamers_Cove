@@ -88,6 +88,12 @@
             <version>3.5.1</version>
         </dependency>
 
+        <!-- Spring Security for password encoding -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+        </dependency>
+
         <!-- Google Cloud Firestore -->
         <dependency>
             <groupId>com.google.cloud</groupId>
