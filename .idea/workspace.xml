@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="Created entities/models using ORM. User, Review, Game and friendship entities. Trivia/AI game sessions will be implemented at a later time">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="fixed pom.xml file to run after calling mvn clean install in terminal">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GamersCoveApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/GamersCoveApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+        <entry key="$PROJECT_DIR$" value="backend-dev-models" />
         <entry key="$PROJECT_DIR$" value="database-integration" />
       </map>
     </option>
@@ -79,7 +79,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.GamersCoveApplication.executor": "Debug",
-    "git-widget-placeholder": "backend-dev-models",
+    "git-widget-placeholder": "backend-dev-firestore-config",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
@@ -99,6 +99,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.example.gamerscove" />
       <recent name="" />
     </key>
   </component>
@@ -163,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758236301899</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed pom.xml file to run after calling mvn clean install in terminal">
+      <option name="closed" value="true" />
+      <created>1758238198917</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758238198917</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +181,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated file structure for better integration with Springboot app" />
     <MESSAGE value="Created entities/models using ORM. User, Review, Game and friendship entities. Trivia/AI game sessions will be implemented at a later time" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created entities/models using ORM. User, Review, Game and friendship entities. Trivia/AI game sessions will be implemented at a later time" />
+    <MESSAGE value="fixed pom.xml file to run after calling mvn clean install in terminal" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed pom.xml file to run after calling mvn clean install in terminal" />
   </component>
 </project>

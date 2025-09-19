@@ -23,6 +23,12 @@ public class User {
     @Column(name = "firebase_uid", nullable = false, unique = true, length = 128)
     private String firebaseUid;
 
+    @Transient
+    private String email;
+
+    @Transient
+    private String password;
+
     @NotNull
     @Size(max = 50)
     @Column(name = "username", nullable = false, unique = true, length = 50)
@@ -68,8 +74,10 @@ public class User {
 
     public User(){}
 
-    public User(String firebaseUid, String username) {
+    public User(String firebaseUid, String username, String email, String password) {
         this.firebaseUid = firebaseUid;
         this.username = username;
+        this.email = email;
+        this.password = password;
     }
 }
