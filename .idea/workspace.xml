@@ -4,26 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="updated file structure for better integration with Springboot app">
-      <change beforePath="$PROJECT_DIR$/Gamers Cove/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gamers Cove/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gamers Cove/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gamers Cove/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gamers Cove/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gamers Cove/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gamers Cove/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gamers Cove/src/main/java/org/example/gamerscove/GamersCoveApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gamers Cove/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gamers Cove/src/test/java/org/example/gamerscove/GamersCoveApplicationTests.java" beforeDir="false" />
+    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="fixed pom.xml file to run after calling mvn clean install in terminal">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+        <entry key="$PROJECT_DIR$" value="backend-dev-models" />
         <entry key="$PROJECT_DIR$" value="database-integration" />
       </map>
     </option>
@@ -47,6 +49,14 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="17" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -59,34 +69,47 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.GamersCoveApplication.executor": "Debug",
+    "Application.GamerscoveApplication.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.GamersCoveApplication.executor": "Debug",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "backend-dev-firestore-config",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/fredd/SideProject/Gamers_Cove",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.example.gamerscove" />
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.GamersCoveApplication">
     <configuration name="GamersCoveApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.gamerscove.GamersCoveApplication" />
       <module name="GamersCove" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.gamerscove.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -112,7 +135,6 @@
     <attachedChunks>
       <set>
         <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
-        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
       </set>
     </attachedChunks>
   </component>
@@ -134,7 +156,23 @@
       <option name="project" value="LOCAL" />
       <updated>1757881959343</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created entities/models using ORM. User, Review, Game and friendship entities. Trivia/AI game sessions will be implemented at a later time">
+      <option name="closed" value="true" />
+      <created>1758236301899</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758236301899</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fixed pom.xml file to run after calling mvn clean install in terminal">
+      <option name="closed" value="true" />
+      <created>1758238198917</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758238198917</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +180,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated file structure for better integration with Springboot app" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated file structure for better integration with Springboot app" />
+    <MESSAGE value="Created entities/models using ORM. User, Review, Game and friendship entities. Trivia/AI game sessions will be implemented at a later time" />
+    <MESSAGE value="fixed pom.xml file to run after calling mvn clean install in terminal" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed pom.xml file to run after calling mvn clean install in terminal" />
   </component>
 </project>
