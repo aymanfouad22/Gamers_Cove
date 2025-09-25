@@ -1,4 +1,4 @@
-package Entity;
+package org.example.gamerscove.domain.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -7,9 +7,9 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Max;
 import java.time.LocalDateTime;
 
-@Entity
+@jakarta.persistence.Entity
 @Table(name = "reviews")
-public class Review {
+public class ReviewEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,11 +39,11 @@ public class Review {
     private LocalDateTime createdAt;
 
     // Default constructor
-    public Review() {
+    public ReviewEntity() {
     }
 
     // Constructor with required fields
-    public Review(Long userId, Long gameId, Integer rating, String content) {
+    public ReviewEntity(Long userId, Long gameId, Integer rating, String content) {
         this.userId = userId;
         this.gameId = gameId;
         this.rating = rating;

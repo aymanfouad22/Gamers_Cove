@@ -1,14 +1,14 @@
 # Gamers Cove 🎮
 
-A comprehensive fandom website project about games featuring AI chatbot integration and an AI mini-game engine.
+A comprehensive fandom website project about games featuring AI chatbot integration and an AI mini-gameEntity engine.
 
 ## 🚀 Features
 
-- **Game Database**: Comprehensive game information, reviews, and ratings
+- **Game Database**: Comprehensive gameEntity information, reviews, and ratings
 - **User Management**: User profiles, favorites, and wishlists
 - **Review System**: User-generated reviews with pros/cons and helpful voting
 - **Comment System**: Nested comments on games and reviews
-- **AI Chatbot**: Intelligent gaming assistant for user queries
+- **AI Chatbot**: Intelligent gaming assistant for userEntity queries
 - **AI Mini-Game Engine**: Interactive AI-powered mini-games
 - **Modern UI**: Responsive design with beautiful gaming aesthetics
 
@@ -125,20 +125,20 @@ npm run test:backend
 ### Authentication
 - `POST /api/auth/register` - User registration
 - `POST /api/auth/login` - User login
-- `GET /api/auth/profile` - Get user profile
+- `GET /api/auth/profile` - Get userEntity profile
 
 ### Games
 - `GET /api/games` - Get all games
-- `GET /api/games/:id` - Get game by ID
-- `POST /api/games` - Create new game (admin only)
+- `GET /api/games/:id` - Get gameEntity by ID
+- `POST /api/games` - Create new gameEntity (admin only)
 
 ### Reviews
-- `GET /api/reviews/game/:gameId` - Get reviews for a game
+- `GET /api/reviews/gameEntity/:gameId` - Get reviews for a gameEntity
 - `POST /api/reviews` - Create a review
 - `PUT /api/reviews/:id` - Update a review
 
 ### Comments
-- `GET /api/comments/game/:gameId` - Get comments for a game
+- `GET /api/comments/gameEntity/:gameId` - Get comments for a gameEntity
 - `POST /api/comments` - Create a comment
 - `PUT /api/comments/:id` - Update a comment
 
@@ -160,7 +160,7 @@ npm run test:backend
 
 - **Home**: Featured games, latest reviews, community highlights
 - **Game List**: Browse all games with filters and search
-- **Game Details**: Comprehensive game information, reviews, and comments
+- **Game Details**: Comprehensive gameEntity information, reviews, and comments
 - **User Profile**: Personal dashboard, favorites, and activity
 
 ## 🎨 Components
@@ -168,7 +168,7 @@ npm run test:backend
 - **Game Card**: Game preview with rating and quick actions
 - **Review Section**: User reviews with helpful voting
 - **Comment Box**: Interactive commenting system
-- **Navbar**: Navigation and user menu
+- **Navbar**: Navigation and userEntity menu
 - **Common**: Reusable UI elements
 
 ## 🔒 Security Features
