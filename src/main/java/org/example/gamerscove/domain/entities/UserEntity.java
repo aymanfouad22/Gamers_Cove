@@ -2,13 +2,12 @@ package org.example.gamerscove.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Type;
-import io.hypersistence.utils.hibernate.type.array.StringArrayType;
-import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.Map;
+import java.util.HashMap;
 
+@Data
 @Entity
 @Builder
 @AllArgsConstructor
@@ -43,17 +42,17 @@ public class UserEntity {
     @Column(name = "bio", columnDefinition = "TEXT")
     private String bio;
 
-    @Type(StringArrayType.class)
-    @Column(name = "preferred_platforms", columnDefinition = "text[]")
-    private String[] preferredPlatforms;
+    // Store as comma-separated string instead of PostgreSQL array
+    @Column(name = "preferred_platforms", columnDefinition = "TEXT")
+    private String preferredPlatformsString;
 
-    @Type(StringArrayType.class)
-    @Column(name = "favorite_games", columnDefinition = "text[]")
-    private String[] favoriteGames;
+    // Store as comma-separated string instead of PostgreSQL array
+    @Column(name = "favorite_games", columnDefinition = "TEXT")
+    private String favoriteGamesString;
 
-    @Type(JsonBinaryType.class)
-    @Column(name = "gamertags", columnDefinition = "jsonb")
-    private Map<String, String> gamertags;
+    // Store as simple JSON string instead of JSONB
+    @Column(name = "gamertags", columnDefinition = "TEXT")
+    private String gamertagsJson;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "gamertags_visibility", length = 10, columnDefinition = "varchar(10) default 'friends'")
@@ -73,6 +72,98 @@ public class UserEntity {
         public String getValue() {
             return value;
         }
+    }
+
+    // Utility methods for preferred platforms array
+    public String[] getPreferredPlatforms() {
+        if (preferredPlatformsString == null || preferredPlatformsString.trim().isEmpty()) {
+            return new String[0];
+        }
+        return preferredPlatformsString.split(",");
+    }
+
+    public void setPreferredPlatforms(String[] platforms) {
+        if (platforms == null || platforms.length == 0) {
+            this.preferredPlatformsString = null;
+        } else {
+            this.preferredPlatformsString = String.join(",", platforms);
+        }
+    }
+
+    // Utility methods for favorite games array
+    public String[] getFavoriteGames() {
+        if (favoriteGamesString == null || favoriteGamesString.trim().isEmpty()) {
+            return new String[0];
+        }
+        return favoriteGamesString.split(",");
+    }
+
+    public void setFavoriteGames(String[] games) {
+        if (games == null || games.length == 0) {
+            this.favoriteGamesString = null;
+        } else {
+            this.favoriteGamesString = String.join(",", games);
+        }
+    }
+
+    // Utility methods for gamertags map (simple JSON-like format)
+    public Map<String, String> getGamertags() {
+        Map<String, String> map = new HashMap<>();
+        if (gamertagsJson == null || gamertagsJson.trim().isEmpty()) {
+            return map;
+        }
+
+        // Parse simple format: "key1=value1,key2=value2"
+        try {
+            String[] pairs = gamertagsJson.split(",");
+            for (String pair : pairs) {
+                String[] keyValue = pair.split("=", 2);
+                if (keyValue.length == 2) {
+                    map.put(keyValue[0].trim(), keyValue[1].trim());
+                }
+            }
+        } catch (Exception e) {
+            // If parsing fails, return empty map
+            return new HashMap<>();
+        }
+
+        return map;
+    }
+
+    public void setGamertags(Map<String, String> gamertags) {
+        if (gamertags == null || gamertags.isEmpty()) {
+            this.gamertagsJson = null;
+        } else {
+            StringBuilder sb = new StringBuilder();
+            boolean first = true;
+            for (Map.Entry<String, String> entry : gamertags.entrySet()) {
+                if (!first) {
+                    sb.append(",");
+                }
+                sb.append(entry.getKey()).append("=").append(entry.getValue());
+                first = false;
+            }
+            this.gamertagsJson = sb.toString();
+        }
+    }
+
+    // Helper method to add a single gamertag
+    public void addGamertag(String platform, String gamertag) {
+        Map<String, String> current = getGamertags();
+        current.put(platform, gamertag);
+        setGamertags(current);
+    }
+
+    // Helper method to remove a gamertag
+    public void removeGamertag(String platform) {
+        Map<String, String> current = getGamertags();
+        current.remove(platform);
+        setGamertags(current);
+    }
+
+    // Helper method to get a specific gamertag
+    public String getGamertag(String platform) {
+        return getGamertags().get(platform);
     }
 
     public UserEntity(String firebaseUid, String username, String email, String password) {

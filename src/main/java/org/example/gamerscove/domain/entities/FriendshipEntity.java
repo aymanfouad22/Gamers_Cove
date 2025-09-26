@@ -3,7 +3,8 @@ package org.example.gamerscove.domain.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-@jakarta.persistence.Entity
+@Data
+@Entity
 @Table(name = "friendships")
 @Getter @Setter
 public class FriendshipEntity {

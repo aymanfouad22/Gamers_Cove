@@ -4,25 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="fixed pom.xml file to run after calling mvn clean install in terminal">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/config/map/MapperConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/dto/UserDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/mappers/Mapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/mappers/impl/UserMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/repositories/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="began api implementation on user, de-coupled data accessing logic.">
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/config/firestore/FirestoreConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/config/firestore/FirestoreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Friendship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/FriendshipEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/GameEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/ReviewEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/GamersCoveApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/GamersCoveApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/FriendshipEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/FriendshipEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/GameEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/GameEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/ReviewEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/ReviewEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -106,7 +99,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "settings.editor.selected.configurable": "advanced.settings",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -186,7 +179,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758238198917</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="began api implementation on user, de-coupled data accessing logic.">
+      <option name="closed" value="true" />
+      <created>1758775769618</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758775769618</updated>
+    </task>
+    <task id="LOCAL-00005" summary="began api implementation on user, de-coupled data accessing logic.">
+      <option name="closed" value="true" />
+      <created>1758775924815</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1758775924815</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +205,7 @@
     <MESSAGE value="updated file structure for better integration with Springboot app" />
     <MESSAGE value="Created entities/models using ORM. User, Review, Game and friendship entities. Trivia/AI game sessions will be implemented at a later time" />
     <MESSAGE value="fixed pom.xml file to run after calling mvn clean install in terminal" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed pom.xml file to run after calling mvn clean install in terminal" />
+    <MESSAGE value="began api implementation on user, de-coupled data accessing logic." />
+    <option name="LAST_COMMIT_MESSAGE" value="began api implementation on user, de-coupled data accessing logic." />
   </component>
 </project>

@@ -1,15 +1,18 @@
 package org.example.gamerscove.domain.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Type;
-import io.hypersistence.utils.hibernate.type.array.StringArrayType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-@jakarta.persistence.Entity
+@Data
+@Entity
 @Table(name = "games")
 @Getter @Setter
 public class GameEntity {
@@ -37,13 +40,45 @@ public class GameEntity {
     @Column(name = "release_date")
     private LocalDate releaseDate;
 
-    @Type(StringArrayType.class)
-    @Column(name = "platforms", columnDefinition = "text[]")
-    private String[] platforms;
+    // Store as comma-separated string instead of PostgreSQL array
+    @Column(name = "platforms", columnDefinition = "TEXT")
+    private String platformsString;
 
-    @Type(StringArrayType.class)
-    @Column(name = "genres", columnDefinition = "text[]")
-    private String[] genres;
+    // Store as comma-separated string instead of PostgreSQL array
+    @Column(name = "genres", columnDefinition = "TEXT")
+    private String genresString;
+
+    // Utility methods for platforms array
+    public String[] getPlatforms() {
+        if (platformsString == null || platformsString.trim().isEmpty()) {
+            return new String[0];
+        }
+        return platformsString.split(",");
+    }
+
+    public void setPlatforms(String[] platforms) {
+        if (platforms == null || platforms.length == 0) {
+            this.platformsString = null;
+        } else {
+            this.platformsString = String.join(",", platforms);
+        }
+    }
+
+    // Utility methods for genres array
+    public String[] getGenres() {
+        if (genresString == null || genresString.trim().isEmpty()) {
+            return new String[0];
+        }
+        return genresString.split(",");
+    }
+
+    public void setGenres(String[] genres) {
+        if (genres == null || genres.length == 0) {
+            this.genresString = null;
+        } else {
+            this.genresString = String.join(",", genres);
+        }
+    }
 
     // Default constructor
     public GameEntity() {}
@@ -63,14 +98,16 @@ public class GameEntity {
         this.description = description;
         this.coverImageUrl = coverImageUrl;
         this.releaseDate = releaseDate;
-        this.platforms = platforms;
-        this.genres = genres;
+        setPlatforms(platforms); // Use setter to handle conversion
+        setGenres(genres); // Use setter to handle conversion
     }
+
     // Convenience methods for array operations
     public boolean hasPlatform(String platform) {
-        if (platforms == null) return false;
+        String[] platforms = getPlatforms();
+        if (platforms.length == 0) return false;
         for (String p : platforms) {
-            if (platform.equalsIgnoreCase(p)) {
+            if (platform.equalsIgnoreCase(p.trim())) {
                 return true;
             }
         }
@@ -78,9 +115,10 @@ public class GameEntity {
     }
 
     public boolean hasGenre(String genre) {
-        if (genres == null) return false;
+        String[] genres = getGenres();
+        if (genres.length == 0) return false;
         for (String g : genres) {
-            if (genre.equalsIgnoreCase(g)) {
+            if (genre.equalsIgnoreCase(g.trim())) {
                 return true;
             }
         }
@@ -88,71 +126,77 @@ public class GameEntity {
     }
 
     public void addPlatform(String platform) {
-        if (platforms == null) {
-            platforms = new String[]{platform};
+        String[] currentPlatforms = getPlatforms();
+        if (currentPlatforms.length == 0) {
+            setPlatforms(new String[]{platform});
         } else {
             // Check if platform already exists
             if (hasPlatform(platform)) {
                 return;
             }
             // Add new platform
-            String[] newPlatforms = new String[platforms.length + 1];
-            System.arraycopy(platforms, 0, newPlatforms, 0, platforms.length);
-            newPlatforms[platforms.length] = platform;
-            platforms = newPlatforms;
+            String[] newPlatforms = new String[currentPlatforms.length + 1];
+            System.arraycopy(currentPlatforms, 0, newPlatforms, 0, currentPlatforms.length);
+            newPlatforms[currentPlatforms.length] = platform;
+            setPlatforms(newPlatforms);
         }
     }
 
     public void addGenre(String genre) {
-        if (genres == null) {
-            genres = new String[]{genre};
+        String[] currentGenres = getGenres();
+        if (currentGenres.length == 0) {
+            setGenres(new String[]{genre});
         } else {
             // Check if genre already exists
             if (hasGenre(genre)) {
                 return;
             }
             // Add new genre
-            String[] newGenres = new String[genres.length + 1];
-            System.arraycopy(genres, 0, newGenres, 0, genres.length);
-            newGenres[genres.length] = genre;
-            genres = newGenres;
+            String[] newGenres = new String[currentGenres.length + 1];
+            System.arraycopy(currentGenres, 0, newGenres, 0, currentGenres.length);
+            newGenres[currentGenres.length] = genre;
+            setGenres(newGenres);
         }
     }
 
     public void removePlatform(String platform) {
-        if (platforms == null) return;
+        String[] currentPlatforms = getPlatforms();
+        if (currentPlatforms.length == 0) return;
 
-        java.util.List<String> platformList = new java.util.ArrayList<>();
-        for (String p : platforms) {
-            if (!platform.equalsIgnoreCase(p)) {
-                platformList.add(p);
+        List<String> platformList = new ArrayList<>();
+        for (String p : currentPlatforms) {
+            if (!platform.equalsIgnoreCase(p.trim())) {
+                platformList.add(p.trim());
             }
         }
-        platforms = platformList.toArray(new String[0]);
+        setPlatforms(platformList.toArray(new String[0]));
     }
 
     public void removeGenre(String genre) {
-        if (genres == null) return;
+        String[] currentGenres = getGenres();
+        if (currentGenres.length == 0) return;
 
-        java.util.List<String> genreList = new java.util.ArrayList<>();
-        for (String g : genres) {
-            if (!genre.equalsIgnoreCase(g)) {
-                genreList.add(g);
+        List<String> genreList = new ArrayList<>();
+        for (String g : currentGenres) {
+            if (!genre.equalsIgnoreCase(g.trim())) {
+                genreList.add(g.trim());
             }
         }
-        genres = genreList.toArray(new String[0]);
+        setGenres(genreList.toArray(new String[0]));
     }
 
     // Get platforms and genres as comma-separated strings for display
     public String getPlatformsAsString() {
-        if (platforms == null || platforms.length == 0) {
+        String[] platforms = getPlatforms();
+        if (platforms.length == 0) {
             return "";
         }
         return String.join(", ", platforms);
     }
 
     public String getGenresAsString() {
-        if (genres == null || genres.length == 0) {
+        String[] genres = getGenres();
+        if (genres.length == 0) {
             return "";
         }
         return String.join(", ", genres);

@@ -5,9 +5,12 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Max;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
-@jakarta.persistence.Entity
+@Data
+@Entity
 @Table(name = "reviews")
 public class ReviewEntity {
 

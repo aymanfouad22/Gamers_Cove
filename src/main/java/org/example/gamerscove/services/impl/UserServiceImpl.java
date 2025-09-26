@@ -1,6 +1,7 @@
 package org.example.gamerscove.services.impl;
 
 import org.example.gamerscove.domain.entities.UserEntity;
+import org.example.gamerscove.repositories.UserRepository;
 import org.example.gamerscove.services.UserService;
 import org.springframework.stereotype.Service;
 
