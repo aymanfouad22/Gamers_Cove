@@ -34,23 +34,6 @@ public class UserController {
         return userMapper.mapTo(savedUserEntity);
     }
 
-    @PostMapping(path = "/users/me")
-    public ResponseEntity<UserDto> getUserInfo(@RequestBody UserDto user) {
-        logger.info("=== POST /api/users/me ENDPOINT CALLED ===");
-        logger.info("Received request to get user info for Firebase UID: {}", user.getFirebaseUid());
-        logger.info("=========================================");
-
-        Optional<UserEntity> userEntity = userService.findByFirebaseUid(user.getFirebaseUid());
-        if (userEntity.isPresent()) {
-            UserDto userDto = userMapper.mapTo(userEntity.get());
-            logger.info("Returning user info for: {}", userDto.getUsername());
-            return ResponseEntity.ok(userDto);
-        } else {
-            logger.warn("User not found for Firebase UID: {}", user.getFirebaseUid());
-            return ResponseEntity.notFound().build();
-        }
-    }
-
     @PutMapping(path = "/users/me")
     public ResponseEntity<UserDto> updateUserInfo(@RequestBody UserDto user) {
         logger.info("=== PUT /api/users/me ENDPOINT CALLED ===");
@@ -102,9 +85,10 @@ public class UserController {
         logger.info("Fetching user by username: {}", username);
         logger.info("=================================================");
 
-        Optional<UserEntity> user = userService.findByUsername(username);
-        if (user.isPresent()) {
-            UserDto userDto = userMapper.mapTo(user.get());
+        Optional<UserEntity> userFound = userService.findByUsername(username);
+
+        if (userFound.isPresent()) {
+            UserDto userDto = userMapper.mapTo(userFound.get());
             logger.info("Found user: {}", userDto.getUsername());
             return ResponseEntity.ok(userDto);
         } else {

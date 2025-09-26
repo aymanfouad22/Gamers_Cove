@@ -55,13 +55,13 @@ public class UserEntity {
     private String gamertagsJson;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "gamertags_visibility", length = 10, columnDefinition = "varchar(10) default 'friends'")
+    @Column(name = "gamertags_visibility", length = 10, columnDefinition = "varchar(10) default 'FRIENDS'")
     private GamertagsVisibility gamertagsVisibility = GamertagsVisibility.FRIENDS;
 
     // Enum for gamertags_visibility
     public enum GamertagsVisibility {
-        PUBLIC("public"),
-        FRIENDS("friends");
+        PUBLIC("PUBLIC"),
+        FRIENDS("FRIENDS");
 
         private final String value;
 

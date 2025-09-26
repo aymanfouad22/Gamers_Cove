@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="fixed database connection">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/config/DataInitialization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/gamerscove/database/TestDataUtil.java" afterDir="false" />
+    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="improved api implementation and attempted testing. First working on user impl then will move on to other entities.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/GameEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/GameEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/mappers/impl/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/mappers/impl/UserMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/UserEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +70,7 @@
   "keyToString": {
     "Application.GamersCoveApplication.executor": "Run",
     "Application.GamerscoveApplication.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
@@ -135,9 +129,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GamersCoveApplication" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -214,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758849507000</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="improved api implementation and attempted testing. First working on user impl then will move on to other entities.">
+      <option name="closed" value="true" />
+      <created>1758857569050</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1758857569050</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +243,18 @@
     <MESSAGE value="fixed pom.xml file to run after calling mvn clean install in terminal" />
     <MESSAGE value="began api implementation on user, de-coupled data accessing logic." />
     <MESSAGE value="fixed database connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed database connection" />
+    <MESSAGE value="improved api implementation and attempted testing. First working on user impl then will move on to other entities." />
+    <option name="LAST_COMMIT_MESSAGE" value="improved api implementation and attempted testing. First working on user impl then will move on to other entities." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
