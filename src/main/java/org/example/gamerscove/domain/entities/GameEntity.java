@@ -1,18 +1,18 @@
 package org.example.gamerscove.domain.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 @Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "games")
 @Getter @Setter
 public class GameEntity {
@@ -79,9 +79,6 @@ public class GameEntity {
             this.genresString = String.join(",", genres);
         }
     }
-
-    // Default constructor
-    public GameEntity() {}
 
     // Constructor with required fields
     public GameEntity(String externalApiId, String title) {

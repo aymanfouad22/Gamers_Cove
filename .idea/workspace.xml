@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="began api implementation on user, de-coupled data accessing logic.">
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="fixed database connection">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/config/DataInitialization.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/gamerscove/database/TestDataUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/GamersCoveApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/GamersCoveApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/FriendshipEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/FriendshipEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/GameEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/GameEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/ReviewEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/ReviewEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/mappers/impl/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/mappers/impl/UserMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -63,7 +63,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -90,7 +90,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/fredd/SideProject/Gamers_Cove",
+    "last_opened_file_path": "C:/Users/fredd/SideProject/Gamers_Cove/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -105,6 +105,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\fredd\SideProject\Gamers_Cove\src\main\resources" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.example.gamerscove" />
       <recent name="" />
@@ -195,7 +198,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758775924815</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fixed database connection">
+      <option name="closed" value="true" />
+      <created>1758849165700</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1758849165700</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fixed database connection">
+      <option name="closed" value="true" />
+      <created>1758849507000</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1758849507000</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +225,7 @@
     <MESSAGE value="Created entities/models using ORM. User, Review, Game and friendship entities. Trivia/AI game sessions will be implemented at a later time" />
     <MESSAGE value="fixed pom.xml file to run after calling mvn clean install in terminal" />
     <MESSAGE value="began api implementation on user, de-coupled data accessing logic." />
-    <option name="LAST_COMMIT_MESSAGE" value="began api implementation on user, de-coupled data accessing logic." />
+    <MESSAGE value="fixed database connection" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed database connection" />
   </component>
 </project>
