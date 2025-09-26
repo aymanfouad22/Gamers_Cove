@@ -1,12 +1,16 @@
 package org.example.gamerscove.config;
 
+import org.example.gamerscove.domain.entities.GameEntity;
 import org.example.gamerscove.domain.entities.UserEntity;
+import org.example.gamerscove.repositories.GameRepository;
 import org.example.gamerscove.repositories.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,9 +20,11 @@ public class DataInitialization implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(DataInitialization.class);
     private final UserRepository userRepository;
+    private final GameRepository gameRepository;
 
-    public DataInitialization(UserRepository userRepository) {
+    public DataInitialization(UserRepository userRepository,  GameRepository gameRepository) {
         this.userRepository = userRepository;
+        this.gameRepository = gameRepository;
     }
 
     @Override
@@ -28,17 +34,23 @@ public class DataInitialization implements CommandLineRunner {
         // Check if we already have users (avoid duplicates)
         if (userRepository.count() == 0) {
             createSampleUsers();
-            logger.info("Sample data created successfully!");
+            logger.info("User sample data created successfully!");
         } else {
-            logger.info("Database already has data, skipping initialization");
+            logger.info("Database already has user sample, skipping initialization");
+        }
+
+        if  (gameRepository.count() == 0) {
+            createSampleGames();
+            logger.info("Game sample data created successfully!");
+        } else {
+            logger.info("Database already has game sample, skipping initialization");
         }
 
         logger.info("================================================");
     }
 
     private void createSampleUsers() {
-        // Same user creation code as before...
-        // User 1
+
         UserEntity user1 = UserEntity.builder()
                 .firebaseUid("sample-firebase-uid-001")
                 .username("zelda_fan")
@@ -104,5 +116,38 @@ public class DataInitialization implements CommandLineRunner {
 
         userRepository.save(user3);
         logger.info("Created user: " + user3.getUsername());
+    }
+
+    private void createSampleGames() {
+        LocalDate releaseDate = LocalDate.now();
+
+        GameEntity game1 = GameEntity.builder()
+                .title("Dying Light: The Beast")
+                .coverImageUrl(".com")
+                .externalApiId("something")
+                .description("better than dying light 2")
+                .genresString("zombie,first-person,parkour")
+                .build();
+
+        game1.setReleaseDate(releaseDate);
+        game1.setPlatforms(new String[]{"Nintendo Switch", "PC"});
+
+        gameRepository.save(game1);
+        logger.info("Created game: " + game1.getTitle());
+
+        GameEntity game2 = GameEntity.builder()
+                .title("Minecraft")
+                .coverImageUrl("microsoft.jpeg.com")
+                .externalApiId("api id for best game ever")
+                .description("also better than dyling light 2")
+                .genresString("sandbox,survival,fun")
+                .build();
+
+        game2.setReleaseDate(releaseDate);
+        game2.setPlatforms(new String[]{"Nintendo Switch", "PC"});
+
+        gameRepository.save(game2);
+        logger.info("Created game: " + game2.getTitle());
+
     }
 }
