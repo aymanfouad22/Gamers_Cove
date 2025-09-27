@@ -17,8 +17,8 @@ public class GameMapperImpl implements Mapper<GameEntity, GameDto> {
                 .description(gameEntity.getDescription())
                 .coverImageUrl(gameEntity.getCoverImageUrl())
                 .releaseDate(gameEntity.getReleaseDate())
-                .platforms(gameEntity.getPlatforms()) // Uses the getter method that returns String[]
-                .genres(gameEntity.getGenres()) // Uses the getter method that returns String[]
+                .platforms(gameEntity.getPlatforms())
+                .genres(gameEntity.getGenres())
                 .build();
     }
 
@@ -33,7 +33,6 @@ public class GameMapperImpl implements Mapper<GameEntity, GameDto> {
                 .releaseDate(gameDto.getReleaseDate())
                 .build();
 
-        // Use the setter methods that properly handle String[] conversion
         gameEntity.setPlatforms(gameDto.getPlatforms());
         gameEntity.setGenres(gameDto.getGenres());
 
