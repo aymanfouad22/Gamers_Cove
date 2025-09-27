@@ -3,17 +3,10 @@ package org.example.gamerscove.mappers.impl;
 import org.example.gamerscove.domain.dto.UserDto;
 import org.example.gamerscove.domain.entities.UserEntity;
 import org.example.gamerscove.mappers.Mapper;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapperImpl implements Mapper<UserEntity, UserDto> {
-
-    private ModelMapper modelMapper;
-
-    public UserMapperImpl(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
 
     @Override
     public UserDto mapTo(UserEntity userEntity) {
@@ -26,10 +19,10 @@ public class UserMapperImpl implements Mapper<UserEntity, UserDto> {
                 .avatarUrl(userEntity.getAvatarUrl())
                 .bio(userEntity.getBio())
                 .preferredPlatforms(userEntity.getPreferredPlatforms())
-                .favoriteGames(userEntity.getFavoriteGames())
+                .favoriteGameIds(userEntity.getFavoriteGameIds())
                 .gamertags(userEntity.getGamertags())
                 .gamertagsVisibility(userEntity.getGamertagsVisibility() != null ?
-                        UserEntity.GamertagsVisibility.valueOf(userEntity.getGamertagsVisibility().getValue()) : null)
+                        userEntity.getGamertagsVisibility().getValue() : null)
                 .build();
     }
 
@@ -43,17 +36,15 @@ public class UserMapperImpl implements Mapper<UserEntity, UserDto> {
                 .username(userDto.getUsername())
                 .avatarUrl(userDto.getAvatarUrl())
                 .bio(userDto.getBio())
+                .gamertags(userDto.getGamertags())
                 .build();
 
-        // Set arrays using utility methods
         userEntity.setPreferredPlatforms(userDto.getPreferredPlatforms());
-        userEntity.setFavoriteGames(userDto.getFavoriteGames());
-        userEntity.setGamertags(userDto.getGamertags());
+        userEntity.setFavoriteGameIds(userDto.getFavoriteGameIds());
 
-        // Convert string to enum
         if (userDto.getGamertagsVisibility() != null) {
             userEntity.setGamertagsVisibility(
-                    UserEntity.GamertagsVisibility.valueOf(String.valueOf(userDto.getGamertagsVisibility()))
+                    UserEntity.GamertagsVisibility.valueOf(userDto.getGamertagsVisibility().toUpperCase())
             );
         }
 

@@ -57,28 +57,27 @@ public class UserController {
     }
 
     @GetMapping(path = "/users/{userId}/favorite_games")
-    public ResponseEntity<String[]> getUserFavoriteGames(@PathVariable("userId") Long userId) {
+    public ResponseEntity<Long[]> getUserFavoriteGames(@PathVariable("userId") Long userId) {
         logger.info("=== GET /api/users/{}/favorite_games ENDPOINT CALLED ===", userId);
         logger.info("Fetching favorite games for user ID: {}", userId);
         logger.info("======================================================");
 
         Optional<UserEntity> user = userService.findById(userId);
         if (user.isPresent()) {
-            String[] favoriteGames = user.get().getFavoriteGames();
+            Long[] favoriteGameIds = user.get().getFavoriteGameIds();
             logger.info("Found {} favorite games for user {}",
-                    favoriteGames != null ? favoriteGames.length : 0,
+                    favoriteGameIds != null ? favoriteGameIds.length : 0,
                     user.get().getUsername());
-            if (favoriteGames != null) {
-                logger.info("Favorite games: {}", String.join(", ", favoriteGames));
+            if (favoriteGameIds != null) {
+                logger.info("Favorite game IDs: {}", java.util.Arrays.toString(favoriteGameIds));
             }
-            return ResponseEntity.ok(favoriteGames);
+            return ResponseEntity.ok(favoriteGameIds);
         } else {
             logger.warn("User not found with ID: {}", userId);
             return ResponseEntity.notFound().build();
         }
     }
 
-    // Additional endpoint to get user by username for testing
     @GetMapping(path = "/users/username/{username}")
     public ResponseEntity<UserDto> getUserByUsername(@PathVariable("username") String username) {
         logger.info("=== GET /api/users/username/{} ENDPOINT CALLED ===", username);

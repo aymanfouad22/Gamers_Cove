@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -42,17 +44,23 @@ public class UserEntity {
     @Column(name = "bio", columnDefinition = "TEXT")
     private String bio;
 
-    // Store as comma-separated string instead of PostgreSQL array
     @Column(name = "preferred_platforms", columnDefinition = "TEXT")
-    private String preferredPlatformsString;
+    private String preferredPlatforms;
 
-    // Store as comma-separated string instead of PostgreSQL array
-    @Column(name = "favorite_games", columnDefinition = "TEXT")
-    private String favoriteGamesString;
+    // CHANGED: Store game IDs as comma-separated string
+    @Column(name = "favorite_game_ids", columnDefinition = "TEXT")
+    private String favoriteGameIds;
 
-    // Store as simple JSON string instead of JSONB
-    @Column(name = "gamertags", columnDefinition = "TEXT")
-    private String gamertagsJson;
+    // CHANGED: ElementCollection for proper Map storage
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(
+            name = "user_gamertags",
+            joinColumns = @JoinColumn(name = "user_id")
+    )
+    @MapKeyColumn(name = "platform")
+    @Column(name = "gamertag")
+    @Builder.Default
+    private Map<String, String> gamertags = new HashMap<>();
 
     @Enumerated(EnumType.STRING)
     @Column(name = "gamertags_visibility", length = 10, columnDefinition = "varchar(10) default 'FRIENDS'")
@@ -76,94 +84,100 @@ public class UserEntity {
 
     // Utility methods for preferred platforms array
     public String[] getPreferredPlatforms() {
-        if (preferredPlatformsString == null || preferredPlatformsString.trim().isEmpty()) {
+        if (preferredPlatforms == null || preferredPlatforms.trim().isEmpty()) {
             return new String[0];
         }
-        return preferredPlatformsString.split(",");
+        return preferredPlatforms.split(",");
     }
 
     public void setPreferredPlatforms(String[] platforms) {
         if (platforms == null || platforms.length == 0) {
-            this.preferredPlatformsString = null;
+            this.preferredPlatforms = null;
         } else {
-            this.preferredPlatformsString = String.join(",", platforms);
+            this.preferredPlatforms = String.join(",", platforms);
         }
     }
 
-    // Utility methods for favorite games array
+    // NEW: Utility methods for favorite game IDs
+    public Long[] getFavoriteGameIds() {
+        if (favoriteGameIds == null || favoriteGameIds.trim().isEmpty()) {
+            return new Long[0];
+        }
+        return Arrays.stream(favoriteGameIds.split(","))
+                .map(String::trim)
+                .map(Long::parseLong)
+                .toArray(Long[]::new);
+    }
+
+    public void setFavoriteGameIds(Long[] gameIds) {
+        if (gameIds == null || gameIds.length == 0) {
+            this.favoriteGameIds = null;
+        } else {
+            this.favoriteGameIds = Arrays.stream(gameIds)
+                    .map(String::valueOf)
+                    .collect(Collectors.joining(","));
+        }
+    }
+
+    // Helper methods for managing favorite games
+    public void addFavoriteGameId(Long gameId) {
+        Long[] currentIds = getFavoriteGameIds();
+
+        // Check if game ID already exists
+        for (Long id : currentIds) {
+            if (id.equals(gameId)) {
+                return; // Already exists
+            }
+        }
+
+        // Add new game ID
+        Long[] newIds = new Long[currentIds.length + 1];
+        System.arraycopy(currentIds, 0, newIds, 0, currentIds.length);
+        newIds[currentIds.length] = gameId;
+        setFavoriteGameIds(newIds);
+    }
+
+    public void removeFavoriteGameId(Long gameId) {
+        Long[] currentIds = getFavoriteGameIds();
+        Long[] newIds = Arrays.stream(currentIds)
+                .filter(id -> !id.equals(gameId))
+                .toArray(Long[]::new);
+        setFavoriteGameIds(newIds);
+    }
+
+    public boolean hasFavoriteGameId(Long gameId) {
+        Long[] currentIds = getFavoriteGameIds();
+        return Arrays.stream(currentIds).anyMatch(id -> id.equals(gameId));
+    }
+
+    // Backward compatibility - convert String[] to Long[]
+    public void setFavoriteGames(String[] gameNames) {
+        // This method is kept for backward compatibility but should be deprecated
+        // You should use setFavoriteGameIds instead
+    }
+
     public String[] getFavoriteGames() {
-        if (favoriteGamesString == null || favoriteGamesString.trim().isEmpty()) {
-            return new String[0];
-        }
-        return favoriteGamesString.split(",");
+        // This method is kept for backward compatibility
+        // In practice, you'd need to fetch game titles by IDs from GameService
+        return new String[0];
     }
 
-    public void setFavoriteGames(String[] games) {
-        if (games == null || games.length == 0) {
-            this.favoriteGamesString = null;
-        } else {
-            this.favoriteGamesString = String.join(",", games);
-        }
-    }
-
-    // Utility methods for gamertags map (simple JSON-like format)
-    public Map<String, String> getGamertags() {
-        Map<String, String> map = new HashMap<>();
-        if (gamertagsJson == null || gamertagsJson.trim().isEmpty()) {
-            return map;
-        }
-
-        // Parse simple format: "key1=value1,key2=value2"
-        try {
-            String[] pairs = gamertagsJson.split(",");
-            for (String pair : pairs) {
-                String[] keyValue = pair.split("=", 2);
-                if (keyValue.length == 2) {
-                    map.put(keyValue[0].trim(), keyValue[1].trim());
-                }
-            }
-        } catch (Exception e) {
-            // If parsing fails, return empty map
-            return new HashMap<>();
-        }
-
-        return map;
-    }
-
-    public void setGamertags(Map<String, String> gamertags) {
-        if (gamertags == null || gamertags.isEmpty()) {
-            this.gamertagsJson = null;
-        } else {
-            StringBuilder sb = new StringBuilder();
-            boolean first = true;
-            for (Map.Entry<String, String> entry : gamertags.entrySet()) {
-                if (!first) {
-                    sb.append(",");
-                }
-                sb.append(entry.getKey()).append("=").append(entry.getValue());
-                first = false;
-            }
-            this.gamertagsJson = sb.toString();
-        }
-    }
-
-    // Helper method to add a single gamertag
+    // UPDATED: Gamertags methods now work with proper Map
     public void addGamertag(String platform, String gamertag) {
-        Map<String, String> current = getGamertags();
-        current.put(platform, gamertag);
-        setGamertags(current);
+        if (gamertags == null) {
+            gamertags = new HashMap<>();
+        }
+        gamertags.put(platform, gamertag);
     }
 
-    // Helper method to remove a gamertag
     public void removeGamertag(String platform) {
-        Map<String, String> current = getGamertags();
-        current.remove(platform);
-        setGamertags(current);
+        if (gamertags != null) {
+            gamertags.remove(platform);
+        }
     }
 
-    // Helper method to get a specific gamertag
     public String getGamertag(String platform) {
-        return getGamertags().get(platform);
+        return gamertags != null ? gamertags.get(platform) : null;
     }
 
     public UserEntity(String firebaseUid, String username, String email, String password) {
@@ -171,5 +185,6 @@ public class UserEntity {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.gamertags = new HashMap<>();
     }
 }

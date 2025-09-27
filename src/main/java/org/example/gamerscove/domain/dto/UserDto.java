@@ -1,8 +1,9 @@
 package org.example.gamerscove.domain.dto;
 
-import lombok.*;
-import org.example.gamerscove.domain.entities.UserEntity;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.util.Map;
 
 @Data
@@ -10,26 +11,15 @@ import java.util.Map;
 @NoArgsConstructor
 @Builder
 public class UserDto {
-
     private Long id;
-
     private String firebaseUid;
-
     private String email;
-
     private String password;
-
     private String username;
-
     private String avatarUrl;
-
     private String bio;
-
     private String[] preferredPlatforms;
-
-    private String[] favoriteGames;
-
+    private Long[] favoriteGameIds;
     private Map<String, String> gamertags;
-
-    private UserEntity.GamertagsVisibility gamertagsVisibility = UserEntity.GamertagsVisibility.FRIENDS;
+    private String gamertagsVisibility;
 }

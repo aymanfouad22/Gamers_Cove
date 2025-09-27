@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-@Profile({"dev", "test"}) // Only runs in dev or test profiles
+@Profile({"dev", "test"})
 public class DataInitialization implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(DataInitialization.class);
@@ -31,19 +31,18 @@ public class DataInitialization implements CommandLineRunner {
     public void run(String... args) throws Exception {
         logger.info("=== INITIALIZING SAMPLE DATA (Profile: dev/test) ===");
 
-        // Check if we already have users (avoid duplicates)
-        if (userRepository.count() == 0) {
-            createSampleUsers();
-            logger.info("User sample data created successfully!");
-        } else {
-            logger.info("Database already has user sample, skipping initialization");
-        }
-
         if  (gameRepository.count() == 0) {
             createSampleGames();
             logger.info("Game sample data created successfully!");
         } else {
             logger.info("Database already has game sample, skipping initialization");
+        }
+
+        if (userRepository.count() == 0) {
+            createSampleUsers();
+            logger.info("User sample data created successfully!");
+        } else {
+            logger.info("Database already has user sample, skipping initialization");
         }
 
         logger.info("================================================");
@@ -62,7 +61,7 @@ public class DataInitialization implements CommandLineRunner {
                 .build();
 
         user1.setPreferredPlatforms(new String[]{"Nintendo Switch", "PC"});
-        user1.setFavoriteGames(new String[]{"The Legend of Zelda: Breath of the Wild", "Super Mario Odyssey", "Animal Crossing"});
+        user1.setFavoriteGameIds(new Long[]{1L, 2L});
 
         Map<String, String> user1Gamertags = new HashMap<>();
         user1Gamertags.put("Nintendo", "zelda_speedrun");
@@ -72,7 +71,6 @@ public class DataInitialization implements CommandLineRunner {
         userRepository.save(user1);
         logger.info("Created user: " + user1.getUsername());
 
-        // User 2
         UserEntity user2 = UserEntity.builder()
                 .firebaseUid("sample-firebase-uid-002")
                 .username("fps_master")
@@ -84,7 +82,7 @@ public class DataInitialization implements CommandLineRunner {
                 .build();
 
         user2.setPreferredPlatforms(new String[]{"PC", "PlayStation"});
-        user2.setFavoriteGames(new String[]{"Counter-Strike 2", "Valorant", "Apex Legends", "Call of Duty"});
+        user2.setFavoriteGameIds(new Long[]{1L, 2L});
 
         Map<String, String> user2Gamertags = new HashMap<>();
         user2Gamertags.put("Steam", "fps_master_2024");
@@ -94,7 +92,6 @@ public class DataInitialization implements CommandLineRunner {
         userRepository.save(user2);
         logger.info("Created user: " + user2.getUsername());
 
-        // User 3
         UserEntity user3 = UserEntity.builder()
                 .firebaseUid("sample-firebase-uid-003")
                 .username("rpg_lover")
@@ -106,7 +103,7 @@ public class DataInitialization implements CommandLineRunner {
                 .build();
 
         user3.setPreferredPlatforms(new String[]{"PlayStation", "Nintendo Switch", "PC"});
-        user3.setFavoriteGames(new String[]{"Final Fantasy XIV", "Persona 5", "Chrono Trigger", "Dragon Quest XI"});
+        user3.setFavoriteGameIds(new Long[]{1L, 2L});
 
         Map<String, String> user3Gamertags = new HashMap<>();
         user3Gamertags.put("PSN", "rpg_lover_final");
@@ -126,9 +123,9 @@ public class DataInitialization implements CommandLineRunner {
                 .coverImageUrl(".com")
                 .externalApiId("something")
                 .description("better than dying light 2")
-                .genresString("zombie,first-person,parkour")
                 .build();
 
+        game1.setGenres(new String[]{"zombie", "first-person", "parkour"});
         game1.setReleaseDate(releaseDate);
         game1.setPlatforms(new String[]{"Nintendo Switch", "PC"});
 
@@ -140,9 +137,9 @@ public class DataInitialization implements CommandLineRunner {
                 .coverImageUrl("microsoft.jpeg.com")
                 .externalApiId("api id for best game ever")
                 .description("also better than dyling light 2")
-                .genresString("sandbox,survival,fun")
                 .build();
 
+        game2.setGenres(new String[]{"sandbox", "survival", "fun"});
         game2.setReleaseDate(releaseDate);
         game2.setPlatforms(new String[]{"Nintendo Switch", "PC"});
 

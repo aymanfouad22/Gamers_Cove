@@ -4,11 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="improved api implementation and attempted testing. First working on user impl then will move on to other entities.">
+    <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="started endpoints for games">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/config/RestConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/GameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/dto/GameDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/mappers/impl/GameMapperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/GameService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/impl/GameServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/config/DataInitialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/config/DataInitialization.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/GameEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/GameEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/mappers/impl/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/mappers/impl/UserMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/repositories/GameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/repositories/GameRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +67,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -93,7 +104,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "advanced.settings",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -231,7 +242,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758857569050</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="tested getUserByUsername and it passed">
+      <option name="closed" value="true" />
+      <created>1758910529160</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1758910529160</updated>
+    </task>
+    <task id="LOCAL-00010" summary="started endpoints for games">
+      <option name="closed" value="true" />
+      <created>1758911598140</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1758911598140</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,17 +271,8 @@
     <MESSAGE value="began api implementation on user, de-coupled data accessing logic." />
     <MESSAGE value="fixed database connection" />
     <MESSAGE value="improved api implementation and attempted testing. First working on user impl then will move on to other entities." />
-    <option name="LAST_COMMIT_MESSAGE" value="improved api implementation and attempted testing. First working on user impl then will move on to other entities." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java</url>
-          <line>87</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="tested getUserByUsername and it passed" />
+    <MESSAGE value="started endpoints for games" />
+    <option name="LAST_COMMIT_MESSAGE" value="started endpoints for games" />
   </component>
 </project>
