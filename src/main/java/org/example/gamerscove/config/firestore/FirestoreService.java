@@ -1,6 +1,6 @@
-package Configuration;
+package org.example.gamerscove.config.firestore;
 
-import Entity.User;
+import org.example.gamerscove.domain.entities.UserEntity;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,39 +26,39 @@ public class FirestoreService {
      * Creates a new user document in Firestore with firestoreId, email, and hashed password.
      * The document ID will be the firestoreId.
      *
-     * @param user The User object containing firestoreId, email, and password.
+     * @param userEntity The User object containing firestoreId, email, and password.
      * @return The update time of the document.
      * @throws ExecutionException
      * @throws InterruptedException
      */
-    public String createUser(User user) throws ExecutionException, InterruptedException {
+    public String createUser(UserEntity userEntity) throws ExecutionException, InterruptedException {
         // Validate required fields for Firestore
-        if (user.getFirebaseUid() == null || user.getFirebaseUid().trim().isEmpty()) {
+        if (userEntity.getFirebaseUid() == null || userEntity.getFirebaseUid().trim().isEmpty()) {
             throw new IllegalArgumentException("FirestoreId cannot be null or empty");
         }
-        if (user.getEmail() == null || user.getEmail().trim().isEmpty()) {
+        if (userEntity.getEmail() == null || userEntity.getEmail().trim().isEmpty()) {
             throw new IllegalArgumentException("Email cannot be null or empty");
         }
-        if (user.getPassword() == null || user.getPassword().trim().isEmpty()) {
+        if (userEntity.getPassword() == null || userEntity.getPassword().trim().isEmpty()) {
             throw new IllegalArgumentException("Password cannot be null or empty");
         }
 
         // Create a map with only the fields we want to store in Firestore
         Map<String, Object> firestoreUser = new HashMap<>();
-        firestoreUser.put("firestoreId", user.getFirebaseUid());
-        firestoreUser.put("email", user.getEmail());
-        firestoreUser.put("password", passwordEncoder.encode(user.getPassword())); // Hash the password
+        firestoreUser.put("firestoreId", userEntity.getFirebaseUid());
+        firestoreUser.put("email", userEntity.getEmail());
+        firestoreUser.put("password", passwordEncoder.encode(userEntity.getPassword())); // Hash the password
 
         // Optional: Include other fields if they exist
-        if (user.getFirebaseUid() != null) {
-            firestoreUser.put("firebaseUid", user.getFirebaseUid());
+        if (userEntity.getFirebaseUid() != null) {
+            firestoreUser.put("firebaseUid", userEntity.getFirebaseUid());
         }
-        if (user.getUsername() != null) {
-            firestoreUser.put("username", user.getUsername());
+        if (userEntity.getUsername() != null) {
+            firestoreUser.put("username", userEntity.getUsername());
         }
 
         ApiFuture<WriteResult> writeResult = firestore.collection(COLLECTION_NAME)
-                .document(user.getFirebaseUid())
+                .document(userEntity.getFirebaseUid())
                 .set(firestoreUser);
         return writeResult.get().getUpdateTime().toString();
     }
@@ -71,7 +71,7 @@ public class FirestoreService {
      * @throws ExecutionException
      * @throws InterruptedException
      */
-    public User getUserByFirestoreId(String firestoreId) throws ExecutionException, InterruptedException {
+    public UserEntity getUserByFirestoreId(String firestoreId) throws ExecutionException, InterruptedException {
         DocumentReference documentReference = firestore.collection(COLLECTION_NAME).document(firestoreId);
         ApiFuture<DocumentSnapshot> future = documentReference.get();
         DocumentSnapshot document = future.get();
@@ -79,13 +79,13 @@ public class FirestoreService {
         if (document.exists()) {
             Map<String, Object> data = document.getData();
             if (data != null) {
-                User user = new User();
-                user.setFirebaseUid(document.getId());
-                user.setEmail((String) data.get("email"));
-                user.setPassword((String) data.get("password")); // This will be the hashed password
-                user.setFirebaseUid((String) data.get("firebaseUid"));
-                user.setUsername((String) data.get("username"));
-                return user;
+                UserEntity userEntity = new UserEntity();
+                userEntity.setFirebaseUid(document.getId());
+                userEntity.setEmail((String) data.get("email"));
+                userEntity.setPassword((String) data.get("password")); // This will be the hashed password
+                userEntity.setFirebaseUid((String) data.get("firebaseUid"));
+                userEntity.setUsername((String) data.get("username"));
+                return userEntity;
             }
         }
         return null;
@@ -99,7 +99,7 @@ public class FirestoreService {
      * @throws ExecutionException
      * @throws InterruptedException
      */
-    public User getUserByEmail(String email) throws ExecutionException, InterruptedException {
+    public UserEntity getUserByEmail(String email) throws ExecutionException, InterruptedException {
         Query query = firestore.collection(COLLECTION_NAME).whereEqualTo("email", email);
         ApiFuture<QuerySnapshot> querySnapshot = query.get();
 
@@ -107,13 +107,13 @@ public class FirestoreService {
             if (document.exists()) {
                 Map<String, Object> data = document.getData();
                 if (data != null) {
-                    User user = new User();
-                    user.setFirebaseUid(document.getId());
-                    user.setEmail((String) data.get("email"));
-                    user.setPassword((String) data.get("password"));
-                    user.setFirebaseUid((String) data.get("firebaseUid"));
-                    user.setUsername((String) data.get("username"));
-                    return user;
+                    UserEntity userEntity = new UserEntity();
+                    userEntity.setFirebaseUid(document.getId());
+                    userEntity.setEmail((String) data.get("email"));
+                    userEntity.setPassword((String) data.get("password"));
+                    userEntity.setFirebaseUid((String) data.get("firebaseUid"));
+                    userEntity.setUsername((String) data.get("username"));
+                    return userEntity;
                 }
             }
         }
@@ -175,12 +175,12 @@ public class FirestoreService {
      * @throws ExecutionException
      * @throws InterruptedException
      */
-    public User authenticateUser(String email, String password) throws ExecutionException, InterruptedException {
-        User user = getUserByEmail(email);
-        if (user != null && validatePassword(password, user.getPassword())) {
+    public UserEntity authenticateUser(String email, String password) throws ExecutionException, InterruptedException {
+        UserEntity userEntity = getUserByEmail(email);
+        if (userEntity != null && validatePassword(password, userEntity.getPassword())) {
             // Don't return the hashed password in the authenticated user object
-            user.setPassword(null);
-            return user;
+            userEntity.setPassword(null);
+            return userEntity;
         }
         return null;
     }

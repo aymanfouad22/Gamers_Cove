@@ -1,4 +1,4 @@
-package Entity;
+package org.example.gamerscove.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,9 +10,12 @@ import jakarta.validation.constraints.Size;
 import java.util.Map;
 
 @Entity
-@Table(name = "users") // Note: 'user' is a reserved keyword in PostgreSQL
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter @Setter
-public class User {
+@Table(name = "users") // Note: 'user' is a reserved keyword in PostgreSQL
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,9 +75,7 @@ public class User {
         }
     }
 
-    public User(){}
-
-    public User(String firebaseUid, String username, String email, String password) {
+    public UserEntity(String firebaseUid, String username, String email, String password) {
         this.firebaseUid = firebaseUid;
         this.username = username;
         this.email = email;

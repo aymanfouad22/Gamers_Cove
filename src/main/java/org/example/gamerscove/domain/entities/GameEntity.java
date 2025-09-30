@@ -1,4 +1,4 @@
-package Entity;
+package org.example.gamerscove.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,10 +9,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
-@Entity
+@jakarta.persistence.Entity
 @Table(name = "games")
 @Getter @Setter
-public class Game {
+public class GameEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,18 +46,18 @@ public class Game {
     private String[] genres;
 
     // Default constructor
-    public Game() {}
+    public GameEntity() {}
 
     // Constructor with required fields
-    public Game(String externalApiId, String title) {
+    public GameEntity(String externalApiId, String title) {
         this.externalApiId = externalApiId;
         this.title = title;
     }
 
     // Full constructor
-    public Game(String externalApiId, String title, String description,
-                String coverImageUrl, LocalDate releaseDate,
-                String[] platforms, String[] genres) {
+    public GameEntity(String externalApiId, String title, String description,
+                      String coverImageUrl, LocalDate releaseDate,
+                      String[] platforms, String[] genres) {
         this.externalApiId = externalApiId;
         this.title = title;
         this.description = description;
@@ -176,8 +176,8 @@ public class Game {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Game game = (Game) o;
-        return externalApiId != null ? externalApiId.equals(game.externalApiId) : game.externalApiId == null;
+        GameEntity gameEntity = (GameEntity) o;
+        return externalApiId != null ? externalApiId.equals(gameEntity.externalApiId) : gameEntity.externalApiId == null;
     }
 
     @Override

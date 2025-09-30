@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab10a11e-4446-47e9-b972-45c7339e1e94" name="Changes" comment="fixed pom.xml file to run after calling mvn clean install in terminal">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/config/map/MapperConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/controllers/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/mappers/Mapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/mappers/impl/UserMapperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/services/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/config/firestore/FirestoreConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Configuration/FirestoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/config/firestore/FirestoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Friendship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/FriendshipEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/GameEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/ReviewEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gamerscove/domain/entities/UserEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +33,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="backend-dev-models" />
-        <entry key="$PROJECT_DIR$" value="database-integration" />
+        <entry key="$PROJECT_DIR$" value="backend" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,7 +82,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.GamersCoveApplication.executor": "Debug",
+    "Application.GamersCoveApplication.executor": "Run",
     "Application.GamerscoveApplication.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RequestMappingsPanelOrder0": "0",
@@ -79,7 +93,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.GamersCoveApplication.executor": "Debug",
-    "git-widget-placeholder": "backend-dev-firestore-config",
+    "git-widget-placeholder": "api-endpoints",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",

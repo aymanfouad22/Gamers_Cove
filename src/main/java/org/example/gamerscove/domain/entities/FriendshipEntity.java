@@ -1,12 +1,12 @@
-package Entity;
+package org.example.gamerscove.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity
+@jakarta.persistence.Entity
 @Table(name = "friendships")
 @Getter @Setter
-public class Friendship {
+public class FriendshipEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,10 +43,10 @@ public class Friendship {
     }
 
     // Constructors
-    public Friendship() {
+    public FriendshipEntity() {
     }
 
-    public Friendship(Long requesterId, Long receiverId) {
+    public FriendshipEntity(Long requesterId, Long receiverId) {
         this.requesterId = requesterId;
         this.receiverId = receiverId;
         this.status = FriendshipStatus.PENDING;
